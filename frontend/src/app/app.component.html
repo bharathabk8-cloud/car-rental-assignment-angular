@@ -1,0 +1,35 @@
+<div class="container">
+<h1>Car Rental Service</h1>
+
+<div class="card">
+<h3>Booking Details</h3>
+<div class="grid">
+<div><label>Name</label><input [(ngModel)]="customerName"></div>
+<div><label>Start</label><input type="date" [(ngModel)]="startDate"></div>
+<div><label>End</label><input type="date" [(ngModel)]="endDate"></div>
+<div><label>Daily Mileage</label><input type="number" [(ngModel)]="dailyMileage"></div>
+<div><label>License Years</label><input type="number" [(ngModel)]="licenseYears"></div>
+</div><br>
+<button (click)="getOptions()">Get Options</button>
+</div>
+
+<p>{{message}}</p>
+
+<div class="card" *ngIf="options.length">
+<h3>Available Vehicles</h3>
+<div class="option" *ngFor="let o of options">
+<b>{{o.category}}</b><br>
+{{o.durationDays}} day(s)<br>
+<h2>${{o.totalAmount}}</h2>
+<button (click)="reserve(o.category)">Reserve</button>
+</div>
+</div>
+
+<div class="card" *ngIf="reservation">
+<h3>Reservation</h3>
+<p><b>ID:</b> {{reservation.reservationId}}</p>
+<p><b>Vehicle:</b> {{reservation.vehicleId}}</p>
+<p><b>Status:</b> {{reservation.status}}</p>
+<button *ngIf="reservation.status==='ACTIVE'" (click)="cancel()">Cancel</button>
+</div>
+</div>
