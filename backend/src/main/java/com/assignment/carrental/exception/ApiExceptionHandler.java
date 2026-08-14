@@ -1,4 +1,4 @@
-package com.assignment.carrental.controller;
+package com.assignment.carrental.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
